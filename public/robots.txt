@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Autoriser explicitement les ressources statiques
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+
+Sitemap: https://adalink.fr/sitemap.xml
+Host: https://adalink.fr

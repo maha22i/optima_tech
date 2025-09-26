@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Images Production - Adalink</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #f5f5f5; 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+        }
+        .success { 
+            border-color: #4CAF50; 
+            background: #f8fff8; 
+        }
+        .error { 
+            border-color: #f44336; 
+            background: #fff8f8; 
+        }
+        img { 
+            max-width: 150px; 
+            height: auto; 
+            margin: 10px; 
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        .img-loaded { 
+            border-color: #4CAF50; 
+        }
+        .img-error { 
+            border-color: #f44336; 
+        }
+        .debug-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .ok { background: #4CAF50; color: white; }
+        .error { background: #f44336; color: white; }
+        .pending { background: #ff9800; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔬 Test Production Images - Adalink</h1>
+        
+        <div class="debug-info">
+            <strong>Informations de test:</strong><br>
+            URL: <span id="current-url"></span><br>
+            User Agent: <span id="user-agent"></span><br>
+            Date: <span id="timestamp"></span><br>
+            Domaine: <span id="domain"></span>
+        </div>
+        
+        <div class="test-section">
+            <h3>🖼️ Test Images Locales</h3>
+            <div id="local-images">
+                <h4>Logo Principal (Firebase) <span class="status pending" id="status-logo">Test...</span></h4>
+                <img src="https://firebasestorage.googleapis.com/v0/b/navimove-b433a.firebasestorage.app/o/logo.png?alt=media&token=b900b14e-cb31-4761-aae3-d22409dc9878" alt="Logo" id="logo" data-name="logo">
+                
+                <h4>Logo Sans Fond (Firebase) <span class="status pending" id="status-logo-removebg">Test...</span></h4>
+                <img src="https://firebasestorage.googleapis.com/v0/b/navimove-b433a.firebasestorage.app/o/logo-withoutbg.png?alt=media&token=5048627c-2c13-478b-864b-2242f6d06a00" alt="Logo sans fond" id="logo-removebg" data-name="logo-removebg">
+                
+                <h4>Favicon (Local) <span class="status pending" id="status-favicon">Test...</span></h4>
+                <img src="./favicon.ico" alt="Favicon" id="favicon" data-name="favicon">
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🌐 Test Images Externes (Unsplash)</h3>
+            <div id="external-images">
+                <h4>Image Hero <span class="status pending" id="status-hero">Test...</span></h4>
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hero" id="hero" data-name="hero">
+                
+                <h4>Image About <span class="status pending" id="status-about">Test...</span></h4>
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="About" id="about" data-name="about">
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📄 Test Fichiers de Configuration</h3>
+            <div id="config-test">
+                <button onclick="testRobots()">Test robots.txt</button>
+                <button onclick="testSitemap()">Test sitemap.xml</button>
+                <button onclick="testManifest()">Test manifest.json</button>
+                <div id="config-results"></div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📊 Résumé des Tests</h3>
+            <div id="summary"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Informations de debug
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+        document.getElementById('domain').textContent = window.location.hostname;
+        
+        // Variables de suivi
+        const results = {};
+        
+        // Test des images
+        function setupImageTest(imgId) {
+            const img = document.getElementById(imgId);
+            const statusId = 'status-' + img.dataset.name;
+            const status = document.getElementById(statusId);
+            
+            img.onload = function() {
+                img.classList.add('img-loaded');
+                status.textContent = '✅ OK';
+                status.className = 'status ok';
+                results[imgId] = 'success';
+                updateSummary();
+            };
+            
+            img.onerror = function() {
+                img.classList.add('img-error');
+                status.textContent = '❌ ERREUR';
+                status.className = 'status error';
+                results[imgId] = 'error';
+                updateSummary();
+                
+                // Debug supplémentaire
+                console.error('Erreur de chargement pour:', img.src);
+            };
+            
+            // Test explicite avec fetch
+            fetch(img.src, { method: 'HEAD' })
+                .then(response => {
+                    console.log(`${imgId}: Status ${response.status}, Headers:`, [...response.headers.entries()]);
+                })
+                .catch(error => {
+                    console.error(`${imgId}: Fetch error:`, error);
+                });
+        }
+        
+        // Configuration des tests
+        ['logo', 'logo-removebg', 'favicon', 'hero', 'about'].forEach(setupImageTest);
+        
+        // Test des fichiers de config
+        async function testRobots() {
+            try {
+                const response = await fetch('./robots.txt');
+                const text = await response.text();
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>robots.txt (${response.status}):</strong><br>
+                        ${text.substring(0, 500)}${text.length > 500 ? '...' : ''}
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>robots.txt: ERREUR</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        async function testSitemap() {
+            try {
+                const response = await fetch('./sitemap.xml');
+                const text = await response.text();
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>sitemap.xml (${response.status}):</strong><br>
+                        ${text.substring(0, 500)}${text.length > 500 ? '...' : ''}
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>sitemap.xml: ERREUR</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        async function testManifest() {
+            try {
+                const response = await fetch('./manifest.json');
+                const json = await response.json();
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>manifest.json (${response.status}):</strong><br>
+                        ${JSON.stringify(json, null, 2)}
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('config-results').innerHTML += `
+                    <div class="debug-info">
+                        <strong>manifest.json: ERREUR</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        function updateSummary() {
+            const total = Object.keys(results).length;
+            const success = Object.values(results).filter(r => r === 'success').length;
+            const errors = Object.values(results).filter(r => r === 'error').length;
+            
+            document.getElementById('summary').innerHTML = `
+                <div class="debug-info">
+                    <strong>Tests: ${success}/${total} réussis</strong><br>
+                    Succès: ${success} | Erreurs: ${errors}<br>
+                    ${total > 0 ? `Taux de réussite: ${Math.round(success/total*100)}%` : ''}
+                </div>
+            `;
+        }
+        
+        // Tests automatiques au chargement
+        setTimeout(() => {
+            console.log('🔬 Début des tests automatiques...');
+            
+            // Test des headers
+            fetch(window.location.href, { method: 'HEAD' })
+                .then(response => {
+                    console.log('Headers de la page:', [...response.headers.entries()]);
+                });
+                
+        }, 2000);
+    </script>
+</body>
+</html>

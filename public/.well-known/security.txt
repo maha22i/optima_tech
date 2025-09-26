@@ -1,0 +1,11 @@
+Contact: mailto:adalink1423@gmail.com
+Preferred-Languages: fr, en
+Canonical: https://adalink.dj/.well-known/security.txt
+Policy: https://adalink.dj/politique-confidentialite
+Hiring: https://adalink.dj/contact
+Expires: 2025-12-31T23:59:59.000Z
+
+# Si vous découvrez une vulnérabilité de sécurité, 
+# veuillez nous contacter à l'adresse email ci-dessus.
+# Merci de nous laisser un délai raisonnable pour corriger 
+# le problème avant toute divulgation publique. 

@@ -1,0 +1,9 @@
+# ads.txt for adalink.dj
+# Ce fichier peut être utilisé pour autoriser des partenaires publicitaires
+
+# Format: <publisher_domain>, <publisher_account_id>, <account_type>, <certification_authority_id>
+# Exemple:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Aucun partenaire publicitaire autorisé pour le moment
+# Contactez adalink1423@gmail.com pour toute question 

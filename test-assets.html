@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des Assets - Adalink</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .test-item { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        .success { border-color: #4CAF50; background: #f8fff8; }
+        .error { border-color: #f44336; background: #fff8f8; }
+        img { max-width: 100px; height: auto; }
+        .test-url { font-family: monospace; background: #f0f0f0; padding: 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test des Assets Statiques - Adalink</h1>
+        <p>Cette page teste l'accès aux différents assets du site.</p>
+        
+        <div class="test-item">
+            <h3>Logo Principal</h3>
+            <p>URL: <span class="test-url">./logo.png</span></p>
+            <img src="./logo.png" alt="Logo" onerror="this.parentNode.className+=' error'; this.style.display='none';" onload="this.parentNode.className+=' success';">
+        </div>
+        
+        <div class="test-item">
+            <h3>Logo Sans Fond</h3>
+            <p>URL: <span class="test-url">./logo-removebg.png</span></p>
+            <img src="./logo-removebg.png" alt="Logo sans fond" onerror="this.parentNode.className+=' error'; this.style.display='none';" onload="this.parentNode.className+=' success';">
+        </div>
+        
+        <div class="test-item">
+            <h3>Favicon</h3>
+            <p>URL: <span class="test-url">./favicon.ico</span></p>
+            <img src="./favicon.ico" alt="Favicon" onerror="this.parentNode.className+=' error'; this.style.display='none';" onload="this.parentNode.className+=' success';">
+        </div>
+        
+        <div class="test-item">
+            <h3>Manifest</h3>
+            <p>URL: <span class="test-url">./manifest.json</span></p>
+            <button onclick="testJSON('./manifest.json', this)">Tester le Manifest</button>
+            <div id="manifest-result"></div>
+        </div>
+        
+        <div class="test-item">
+            <h3>CSS de Next.js</h3>
+            <p>URL: <span class="test-url">./_next/static/css/</span></p>
+            <button onclick="testCSS(this)">Tester les CSS</button>
+            <div id="css-result"></div>
+        </div>
+    </div>
+    
+    <script>
+        function testJSON(url, button) {
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        button.parentNode.className += ' success';
+                        document.getElementById('manifest-result').innerHTML = '✅ Manifest accessible';
+                    } else {
+                        button.parentNode.className += ' error';
+                        document.getElementById('manifest-result').innerHTML = '❌ Erreur ' + response.status;
+                    }
+                })
+                .catch(error => {
+                    button.parentNode.className += ' error';
+                    document.getElementById('manifest-result').innerHTML = '❌ Erreur: ' + error.message;
+                });
+        }
+        
+        function testCSS(button) {
+            const cssLink = document.querySelector('link[rel="stylesheet"]');
+            if (cssLink) {
+                button.parentNode.className += ' success';
+                document.getElementById('css-result').innerHTML = '✅ CSS trouvé: ' + cssLink.href;
+            } else {
+                button.parentNode.className += ' error';
+                document.getElementById('css-result').innerHTML = '❌ Aucun CSS trouvé';
+            }
+        }
+        
+        // Test automatique au chargement
+        window.onload = function() {
+            console.log('🧪 Tests d\'assets automatiques...');
+            
+            // Test des URLs critiques
+            const criticalAssets = ['/logo.png', '/favicon.ico', '/manifest.json'];
+            
+            criticalAssets.forEach(asset => {
+                fetch(asset)
+                    .then(response => {
+                        console.log(asset + ': ' + (response.ok ? '✅' : '❌ ' + response.status));
+                    })
+                    .catch(error => {
+                        console.log(asset + ': ❌ ' + error.message);
+                    });
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* TEAM */
+    Développeur: Équipe Adalink
+    Contact: adalink1423@gmail.com
+    Localisation: Djibouti
+    
+/* SITE */
+    Dernière mise à jour: 2025/01/26
+    Langage: Français
+    Doctype: HTML5
+    IDE: Cursor, VS Code
+    
+/* TECHNOLOGIES */
+    Framework: Next.js 14
+    CSS: Tailwind CSS
+    Animations: Framer Motion
+    Hébergement: Hostinger
+    
+/* REMERCIEMENTS */
+    Merci à tous nos clients qui nous font confiance
+    pour leurs services d'accueil téléphonique.
+    
+    Site web créé avec passion à Djibouti 🇩🇯 

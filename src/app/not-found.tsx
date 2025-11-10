@@ -60,7 +60,7 @@ export default function NotFound() {
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
             Désolé, la page que vous recherchez n'existe pas ou a été déplacée. 
-            Mais ne vous inquiétez pas, Adalink Group est toujours là pour vous aider !
+            Mais ne vous inquiétez pas, Netlink Solutions est toujours là pour vous aider !
           </p>
         </motion.div>
 
@@ -163,7 +163,7 @@ export default function NotFound() {
           transition={{ duration: 1, delay: 1.2 }}
           className="mt-16 text-slate-400 text-sm"
         >
-          💡 Le saviez-vous ? Adalink Group développe des solutions digitales innovantes avec expertise !
+          💡 Le saviez-vous ? Netlink Solutions développe des solutions digitales innovantes avec expertise !
         </motion.div>
       </div>
     </div>

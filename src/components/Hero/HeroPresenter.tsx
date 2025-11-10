@@ -134,7 +134,7 @@ web & mobile
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              Adalink Group transforme vos idées en solutions digitales exceptionnelles. 
+              Netlink Solutions transforme vos idées en solutions digitales exceptionnelles. 
               <strong style={{ color: colors.accent.primary }}> Sites web professionnels, applications mobiles iOS & Android </strong> : 
               nous créons des expériences numériques qui font grandir votre entreprise.
             </motion.p>

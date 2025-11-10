@@ -114,7 +114,7 @@ const FeaturesPresenter: React.FC<FeaturesPresenterProps> = () => {
             viewport={{ once: true }}
           >
             Du simple site vitrine aux applications mobiles complexes, 
-            Adalink Group transforme vos idées en solutions digitales qui font grandir votre entreprise.
+            Netlink Solutions transforme vos idées en solutions digitales qui font grandir votre entreprise.
           </motion.p>
         </motion.div>
 
@@ -209,7 +209,7 @@ const FeaturesPresenter: React.FC<FeaturesPresenterProps> = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Pourquoi choisir Adalink Group ?
+              Pourquoi choisir Netlink Solutions ?
             </motion.h3>
             <motion.p 
               className="text-sm sm:text-base text-blue-100 max-w-2xl mx-auto"

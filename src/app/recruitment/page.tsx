@@ -56,7 +56,7 @@ export default function RecruitmentPage() {
     {
       step: '04',
       title: 'Intégration',
-      description: 'Bienvenue dans l\'équipe Adalink !',
+      description: 'Bienvenue dans l\'équipe Netlink Solutions !',
       icon: Briefcase
     }
   ]
@@ -137,7 +137,7 @@ export default function RecruitmentPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Chez Adalink, nous construisons plus qu'une entreprise, nous créons une famille 
+              Chez Netlink Solutions, nous construisons plus qu'une entreprise, nous créons une famille 
               où chaque membre contribue à notre succès collectif
             </motion.p>
           </motion.div>

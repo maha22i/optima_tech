@@ -94,7 +94,7 @@ const ContactInfoPresenter: React.FC<ContactInfoPresenterProps> = () => {
 
       {/* Contact Methods */}
       <motion.div 
-        className="space-y-2"
+        className="space-y-4"
         variants={containerVariants}
       >
         {contactInfo.map((info, index) => (
@@ -110,14 +110,14 @@ const ContactInfoPresenter: React.FC<ContactInfoPresenterProps> = () => {
                 href={info.href}
                 target={info.href.startsWith('http') ? '_blank' : undefined}
                 rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="block p-2 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
+                className="block p-4 sm:p-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
                 style={{ backgroundColor: colors.dominant.light }}
               >
                 <ContactInfoCard info={info} />
               </a>
             ) : (
               <div 
-                className="p-2 rounded-lg shadow-md"
+                className="p-4 sm:p-5 rounded-xl shadow-lg"
                 style={{ backgroundColor: colors.dominant.light }}
               >
                 <ContactInfoCard info={info} />
@@ -134,19 +134,19 @@ const ContactInfoPresenter: React.FC<ContactInfoPresenterProps> = () => {
 
 // Contact Info Card Component
 const ContactInfoCard: React.FC<{ info: any }> = ({ info }) => (
-  <div className="flex items-start space-x-2">
+  <div className="flex items-start space-x-4">
     <motion.div 
-      className="w-8 h-8 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
+      className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
       style={{ background: info.gradient }}
       whileHover={{ rotate: 5 }}
     >
-      <info.icon size={14} style={{ color: colors.text.inverse }} />
+      <info.icon size={22} style={{ color: colors.text.inverse }} />
     </motion.div>
     
     <div className="flex-1">
-      <div className="flex items-center justify-between mb-0.5">
+      <div className="flex items-center justify-between mb-2">
         <h4 
-          className="font-semibold text-xs"
+          className="font-bold text-base sm:text-lg"
           style={{ color: colors.text.primary }}
         >
           {info.title}
@@ -157,7 +157,7 @@ const ContactInfoCard: React.FC<{ info: any }> = ({ info }) => (
             whileHover={{ rotate: 45 }}
           >
             <ExternalLink 
-              size={12} 
+              size={16} 
               style={{ color: colors.text.tertiary }} 
             />
           </motion.div>
@@ -165,14 +165,15 @@ const ContactInfoCard: React.FC<{ info: any }> = ({ info }) => (
       </div>
       
       <p 
-        className="font-medium mb-0.5"
-        style={{ color: colors.text.secondary, fontSize: '0.688rem' }}
+        className="font-semibold mb-1.5 text-sm sm:text-base"
+        style={{ color: colors.text.secondary }}
       >
         {info.content}
       </p>
       
       <p 
-        style={{ color: colors.text.tertiary, fontSize: '0.625rem' }}
+        className="text-xs sm:text-sm"
+        style={{ color: colors.text.tertiary }}
       >
         {info.description}
       </p>

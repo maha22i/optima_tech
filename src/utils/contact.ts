@@ -1,11 +1,11 @@
 export const contactInfo = {
-  email: 'support@adalink.fr',
+  email: 'chehem21@gmail.com',
   phone: {
-    display: '+253 77 34 81 82',
-    href: 'tel:+25377348182'
+    display: '+253 77 36 06 07',
+    href: 'tel:+25377360607'
   },
   address: {
-    city: 'Djibouti-Ville',
+    city: 'Cité saoudie, Djibouti-Ville',
     country: 'Djibouti'
   },
   social: {

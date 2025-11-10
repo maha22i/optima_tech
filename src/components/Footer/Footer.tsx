@@ -119,19 +119,19 @@ const Footer: React.FC<FooterProps> = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/navimove-b433a.firebasestorage.app/o/logo.png?alt=media&token=b900b14e-cb31-4761-aae3-d22409dc9878"
-                  alt="Adalink Logo"
-                  width={80}
-                  height={80}
-                  className="rounded-lg shadow-xl"
-                  unoptimized
+                  src="/logo-netlink.png"
+                  alt="Netlink Solutions Logo"
+                  width={144}
+                  height={144}
+                  className="rounded-lg shadow-xl object-contain"
+                  quality={95}
                 />
                 <div>
                   <h3 
                     className="text-2xl font-bold"
                     style={{ color: colors.text.inverse }}
                   >
-                    Adalink Group
+                    Netlink Solutions
                   </h3>
                   <p 
                     className="text-sm"
@@ -361,7 +361,7 @@ const Footer: React.FC<FooterProps> = () => {
                 className="text-sm flex items-center gap-2"
                 style={{ color: colors.text.inverse, opacity: 0.8 }}
               >
-                © {currentYear} Adalink Group. Tous droits réservés.
+                © {currentYear} Netlink Solutions. Tous droits réservés.
               </p>
             </div>
 

@@ -1,12 +1,28 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Globe, Wifi, Wrench, Printer, Settings, Check, ArrowRight, Star, Shield, Headphones, Zap, Cloud } from 'lucide-react'
+import { Globe, Wifi, Wrench, Printer, Settings, Check, ArrowRight, Star, Shield, Headphones, Zap, Cloud, GraduationCap } from 'lucide-react'
 
 interface ServicesGridPresenterProps {}
 
 const ServicesGridPresenter: React.FC<ServicesGridPresenterProps> = () => {
   const services = [
+    {
+      icon: GraduationCap,
+      title: 'Formations professionnelles',
+      description: 'Organisation de formations certifiantes en développement personnel, IT, bureautique, cloud, réseaux et bien plus encore.',
+      features: [
+        'Formations en développement personnel',
+        'Formations IT et technologies (programmation, réseaux, cloud)',
+        'Formations bureautique (Office, outils collaboratifs)',
+        'Formations cloud computing (AWS, Azure, GCP)',
+        'Formations réseaux et infrastructure',
+        'Certifications et accompagnement personnalisé'
+      ],
+      color: 'from-amber-500 to-orange-600',
+      highlight: true,
+      badge: 'Nouveau'
+    },
     {
       icon: Globe,
       title: 'Développement d\'applications & sites web/mobile',
@@ -15,10 +31,14 @@ const ServicesGridPresenter: React.FC<ServicesGridPresenterProps> = () => {
         'Applications web et mobiles sur mesure',
         'Sites vitrines et e-commerce professionnels',
         'Interfaces modernes et ergonomiques',
-        'Intégration de solutions de paiement'
+        'Intégration de solutions de paiement',
+        'API REST et intégrations tierces',
+        'Design responsive et multi-plateformes',
+        'Optimisation SEO et performance',
+        'Maintenance et support technique continu'
       ],
       color: 'from-blue-500 to-blue-600',
-      highlight: true
+      highlight: false
     },
     {
       icon: Wifi,
@@ -28,7 +48,11 @@ const ServicesGridPresenter: React.FC<ServicesGridPresenterProps> = () => {
         'Installation et configuration de réseaux',
         'Serveurs et solutions de connectivité',
         'Maintenance et optimisation',
-        'Sécurité et protection des données'
+        'Sécurité et protection des données',
+        'Virtualisation et cloud hybride',
+        'Systèmes de backup et sauvegarde',
+        'Monitoring et supervision réseau',
+        'Support technique et assistance 24/7'
       ],
       color: 'from-purple-500 to-purple-600',
       highlight: false
@@ -405,7 +429,7 @@ const ServicesGridPresenter: React.FC<ServicesGridPresenterProps> = () => {
               
               <h3 className="text-3xl font-bold text-blue-900 mb-4">
                 Pourquoi choisir
-                <span className="text-blue-500"> Adalink Group</span> ?
+                <span className="text-blue-500"> Netlink Solutions</span> ?
               </h3>
               <p className="text-blue-600 max-w-2xl mx-auto">
                 Nous nous engageons à fournir des solutions de qualité supérieure

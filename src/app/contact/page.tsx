@@ -23,7 +23,7 @@ export default function ContactPage() {
       title: 'WhatsApp',
       description: 'Chat direct et rapide',
       action: 'Chatter sur WhatsApp',
-      href: `https://wa.me/25377348182?text=Bonjour, je souhaite discuter d'un projet avec Adalink Group`,
+      href: `https://wa.me/25377360607?text=Bonjour, je souhaite discuter d'un projet avec Netlink Solutions`,
       gradient: `linear-gradient(135deg, #25D366, #128C7E)`
     },
     {
@@ -111,6 +111,8 @@ export default function ContactPage() {
                   <motion.a
                     key={index}
                     href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : undefined}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="p-3 rounded-lg backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-300 group text-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -176,7 +178,7 @@ export default function ContactPage() {
             </motion.h2>
             
             <motion.p 
-              className="text-sm max-w-2xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
               style={{ color: colors.text.secondary }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -188,7 +190,7 @@ export default function ContactPage() {
             </motion.p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Formulaire */}
             <motion.div 
               className="lg:col-span-2"

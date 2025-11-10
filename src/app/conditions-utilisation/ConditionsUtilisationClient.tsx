@@ -24,7 +24,7 @@ export default function ConditionsUtilisationClient() {
             Conditions d'utilisation
           </h1>
           <p className="text-xl text-gray-600">
-            Modalités d'utilisation du site et des services Adalink Group
+            Modalités d'utilisation du site et des services Netlink Solutions
           </p>
         </motion.div>
 
@@ -46,7 +46,7 @@ export default function ConditionsUtilisationClient() {
               
               <p className="text-gray-700">
                 Les présentes conditions d'utilisation régissent l'accès et l'utilisation du site web 
-                adalink.dj et des services proposés par Adalink Group. En utilisant notre site ou nos services, 
+                adalink.dj et des services proposés par Netlink Solutions. En utilisant notre site ou nos services, 
                 vous acceptez d'être lié par ces conditions.
               </p>
             </section>
@@ -76,7 +76,7 @@ export default function ConditionsUtilisationClient() {
               </h2>
               
               <p className="text-gray-700 mb-4">
-                Adalink Group propose les services suivants :
+                Netlink Solutions propose les services suivants :
               </p>
               
               <div className="grid md:grid-cols-2 gap-4">

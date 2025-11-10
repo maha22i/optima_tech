@@ -15,7 +15,7 @@ const ServicesTestimonialsPresenter: React.FC<ServicesTestimonialsPresenterProps
       name: 'Représentant CNBD',
       company: 'CNBD',
       role: 'Responsable Communication',
-      content: 'Adalink Group nous accompagne avec professionnalisme dans le développement de nos solutions digitales. Leur approche personnalisée et leur expertise technique correspondent parfaitement à nos attentes. Nous apprécions la qualité du travail fourni.',
+      content: 'Netlink Solutions nous accompagne avec professionnalisme dans le développement de nos solutions digitales. Leur approche personnalisée et leur expertise technique correspondent parfaitement à nos attentes. Nous apprécions la qualité du travail fourni.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80'
     }

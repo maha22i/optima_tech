@@ -153,24 +153,7 @@ const AboutUsHeroPresenter: React.FC<AboutUsHeroPresenterProps> = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 border-2 border-gray-600 rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [2, 12, 2] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-0.5 h-2 bg-gray-600 rounded-full mt-1.5"
-          />
-        </motion.div>
-      </motion.div>
+     
 
       <style jsx>{`
         @keyframes blob {

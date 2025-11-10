@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Check, AlertCircle, User, Mail, MessageSquare, Calendar, Loader2 } from 'lucide-react'
+import { Send, Check, AlertCircle, User, Mail, MessageSquare, Calendar, Loader2, Phone } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { colors } from '@/utils/colors'
 import { contactInfo } from '@/utils/contact'
@@ -14,6 +14,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   })
@@ -21,6 +22,17 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [focusedField, setFocusedField] = useState<string | null>(null)
+
+  // Masquer automatiquement le message de succès après 5 secondes
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        setIsSubmitted(false)
+      }, 5000) // 5 secondes
+
+      return () => clearTimeout(timer)
+    }
+  }, [isSubmitted])
 
   const subjectOptions = [
     { value: 'Demande de devis', icon: Calendar, description: 'Obtenez un devis adapté à vos besoins' },
@@ -49,6 +61,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       const templateParams = {
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
+        phone: formData.phone || 'Non renseigné',
         subject: formData.subject,
         message: formData.message,
         time: new Date().toLocaleString('fr-FR', {
@@ -62,10 +75,10 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
       // Envoyer avec EmailJS
       await emailjs.send(
-        'service_r0ojyxv', // Service ID
-        'template_kzkb4o5', // Template ID
+        'service_7vixzuc', // Service ID
+        'template_ohd1q0s', // Template ID
         templateParams,
-        '9Q9GnTHyyBlNMuEBC' // Clé publique
+        'qAhyqdGUGl5uLDqT5' // Clé publique
       )
 
       setIsSubmitted(true)
@@ -73,6 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         firstName: '',
         lastName: '',
         email: '',
+        phone: '',
         subject: '',
         message: ''
       })
@@ -136,7 +150,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </motion.div>
 
         <motion.h3 
-          className="text-base font-bold mb-1"
+          className="text-xl sm:text-2xl font-bold mb-3"
           style={{ color: colors.text.primary }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -146,7 +160,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </motion.h3>
         
         <motion.p 
-          className="text-sm mb-4 leading-relaxed"
+          className="text-base sm:text-lg mb-6 leading-relaxed"
           style={{ color: colors.text.secondary }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,7 +172,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         
         <motion.button
           onClick={() => setIsSubmitted(false)}
-          className="px-6 py-2 font-semibold rounded-lg transition-all duration-300 shadow-md text-sm"
+          className="px-8 py-3 font-semibold rounded-lg transition-all duration-300 shadow-lg text-base"
           style={{ 
             backgroundColor: colors.accent.primary,
             color: colors.text.inverse 
@@ -177,7 +191,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
   return (
     <motion.div 
-      className="relative p-6 rounded-2xl shadow-lg overflow-hidden"
+      className="relative p-8 sm:p-10 rounded-2xl shadow-xl overflow-hidden"
       style={{ backgroundColor: colors.dominant.light }}
       variants={containerVariants}
       initial="hidden"
@@ -195,13 +209,13 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
       <motion.div variants={itemVariants}>
         <h2 
-          className="text-base font-bold mb-1.5"
+          className="text-2xl sm:text-3xl font-bold mb-3"
           style={{ color: colors.text.primary }}
         >
           Envoyez-nous un message
         </h2>
         <p 
-          className="text-xs mb-3"
+          className="text-base sm:text-lg mb-6 leading-relaxed"
           style={{ color: colors.text.secondary }}
         >
           Décrivez-nous votre projet et nous vous recontacterons rapidement
@@ -223,23 +237,23 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center space-x-2">
-              <AlertCircle size={14} />
-              <span className="font-medium text-xs">{error}</span>
+              <AlertCircle size={18} />
+              <span className="font-medium text-sm">{error}</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
         {/* Nom et Prénom */}
         <motion.div 
-          className="grid md:grid-cols-2 gap-3"
+          className="grid md:grid-cols-2 gap-4"
           variants={itemVariants}
         >
           <div className="relative">
             <label 
               htmlFor="firstName" 
-              className="block text-xs font-semibold mb-1.5"
+              className="block text-sm font-semibold mb-2"
               style={{ color: colors.text.primary }}
             >
               Prénom *
@@ -254,22 +268,22 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 onFocus={() => setFocusedField('firstName')}
                 onBlur={() => setFocusedField(null)}
                 required
-                className="w-full pl-7 pr-2 py-1.5 rounded-md border transition-all duration-300 focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
                 style={{
                   borderColor: focusedField === 'firstName' ? colors.accent.primary : colors.dominant.border,
                   backgroundColor: colors.dominant.light,
                   color: colors.text.primary,
-                  fontSize: '0.75rem'
+                  fontSize: '0.95rem'
                 }}
                 placeholder="Votre prénom"
               />
               <div 
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
                 style={{ 
                   color: focusedField === 'firstName' ? colors.accent.primary : colors.text.tertiary 
                 }}
               >
-                <User size={14} />
+                <User size={18} />
               </div>
             </div>
           </div>
@@ -277,7 +291,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           <div className="relative">
             <label 
               htmlFor="lastName" 
-              className="block text-xs font-semibold mb-1.5"
+              className="block text-sm font-semibold mb-2"
               style={{ color: colors.text.primary }}
             >
               Nom *
@@ -292,22 +306,22 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 onFocus={() => setFocusedField('lastName')}
                 onBlur={() => setFocusedField(null)}
                 required
-                className="w-full pl-7 pr-2 py-1.5 rounded-md border transition-all duration-300 focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
                 style={{
                   borderColor: focusedField === 'lastName' ? colors.accent.primary : colors.dominant.border,
                   backgroundColor: colors.dominant.light,
                   color: colors.text.primary,
-                  fontSize: '0.75rem'
+                  fontSize: '0.95rem'
                 }}
                 placeholder="Votre nom"
               />
               <div 
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
                 style={{ 
                   color: focusedField === 'lastName' ? colors.accent.primary : colors.text.tertiary 
                 }}
               >
-                <User size={14} />
+                <User size={18} />
               </div>
             </div>
           </div>
@@ -317,7 +331,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <motion.div variants={itemVariants}>
           <label 
             htmlFor="email" 
-            className="block text-xs font-semibold mb-1.5"
+            className="block text-sm font-semibold mb-2"
             style={{ color: colors.text.primary }}
           >
             Email *
@@ -332,12 +346,12 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               onFocus={() => setFocusedField('email')}
               onBlur={() => setFocusedField(null)}
               required
-              className="w-full pl-7 pr-2 py-1.5 rounded-md border transition-all duration-300 focus:outline-none"
+              className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
               style={{
                 borderColor: focusedField === 'email' ? colors.support.primary : colors.dominant.border,
                 backgroundColor: colors.dominant.light,
                 color: colors.text.primary,
-                fontSize: '0.75rem'
+                fontSize: '0.95rem'
               }}
               placeholder="votre@email.com"
             />
@@ -347,7 +361,45 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 color: focusedField === 'email' ? colors.support.primary : colors.text.tertiary 
               }}
             >
-              <Mail size={14} />
+              <Mail size={18} />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Téléphone */}
+        <motion.div variants={itemVariants}>
+          <label 
+            htmlFor="phone" 
+            className="block text-sm font-semibold mb-2"
+            style={{ color: colors.text.primary }}
+          >
+            Téléphone
+          </label>
+          <div className="relative">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              onFocus={() => setFocusedField('phone')}
+              onBlur={() => setFocusedField(null)}
+              className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+              style={{
+                borderColor: focusedField === 'phone' ? colors.accent.primary : colors.dominant.border,
+                backgroundColor: colors.dominant.light,
+                color: colors.text.primary,
+                fontSize: '0.95rem'
+              }}
+              placeholder="+253 XX XX XX XX"
+            />
+            <div 
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
+              style={{ 
+                color: focusedField === 'phone' ? colors.accent.primary : colors.text.tertiary 
+              }}
+            >
+              <Phone size={18} />
             </div>
           </div>
         </motion.div>
@@ -356,13 +408,14 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <motion.div variants={itemVariants}>
           <label 
             htmlFor="subject" 
-            className="block text-xs font-semibold mb-1.5"
+            className="block text-sm font-semibold mb-2"
             style={{ color: colors.text.primary }}
           >
             Objet de votre demande *
           </label>
           <div className="relative">
-            <select
+            <input
+              type="text"
               id="subject"
               name="subject"
               value={formData.subject}
@@ -370,28 +423,22 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               onFocus={() => setFocusedField('subject')}
               onBlur={() => setFocusedField(null)}
               required
-              className="w-full pl-7 pr-2 py-1.5 rounded-md border transition-all duration-300 focus:outline-none appearance-none"
+              className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
               style={{
                 borderColor: focusedField === 'subject' ? colors.accent.primary : colors.dominant.border,
                 backgroundColor: colors.dominant.light,
                 color: colors.text.primary,
-                fontSize: '0.75rem'
+                fontSize: '0.95rem'
               }}
-            >
-              <option value="">Sélectionnez le type de votre demande</option>
-              {subjectOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.value} - {option.description}
-                </option>
-              ))}
-            </select>
+              placeholder="Ex: Demande de devis, Information sur vos services..."
+            />
             <div 
               className="absolute left-3 top-1/2 transform -translate-y-1/2 transition-colors duration-300"
               style={{ 
                 color: focusedField === 'subject' ? colors.accent.primary : colors.text.tertiary 
               }}
             >
-              <MessageSquare size={14} />
+              <MessageSquare size={18} />
             </div>
           </div>
         </motion.div>
@@ -400,7 +447,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <motion.div variants={itemVariants}>
           <label 
             htmlFor="message" 
-            className="block text-xs font-semibold mb-1.5"
+            className="block text-sm font-semibold mb-2"
             style={{ color: colors.text.primary }}
           >
             Votre message *
@@ -414,23 +461,23 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               onFocus={() => setFocusedField('message')}
               onBlur={() => setFocusedField(null)}
               required
-              rows={4}
-              className="w-full pl-7 pr-2 py-1.5 rounded-md border transition-all duration-300 focus:outline-none resize-none"
+              rows={6}
+              className="w-full pl-10 pr-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none resize-none"
               style={{
                 borderColor: focusedField === 'message' ? colors.accent.primary : colors.dominant.border,
                 backgroundColor: colors.dominant.light,
                 color: colors.text.primary,
-                fontSize: '0.75rem'
+                fontSize: '0.95rem'
               }}
-              placeholder="Décrivez vos besoins en détail, le nombre d'appels estimé, vos horaires préférés..."
+              placeholder="Décrivez vos besoins en détail..."
             />
             <div 
-              className="absolute left-2 top-3 transition-colors duration-300"
+              className="absolute left-3 top-4 transition-colors duration-300"
               style={{ 
                 color: focusedField === 'message' ? colors.accent.primary : colors.text.tertiary 
               }}
             >
-              <MessageSquare size={14} />
+              <MessageSquare size={18} />
             </div>
           </div>
         </motion.div>
@@ -440,7 +487,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           <motion.button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2 px-3 font-semibold text-xs rounded-md transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full py-4 px-6 font-semibold text-base rounded-lg transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
             style={{ 
               background: `linear-gradient(135deg, ${colors.accent.primary}, ${colors.accent.primaryHover})`,
               color: colors.text.inverse 
@@ -465,7 +512,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   >
-                    <Loader2 size={18} />
+                    <Loader2 size={20} />
                   </motion.div>
                   <span>Envoi en cours...</span>
                 </motion.div>
@@ -477,7 +524,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   exit={{ opacity: 0 }}
                   className="flex items-center space-x-3"
                 >
-                  <Send size={18} />
+                  <Send size={20} />
                   <span>Envoyer le message</span>
                 </motion.div>
               )}

@@ -7,7 +7,7 @@ import ServicesPortfolio from '@/components/ServicesPortfolio'
 import ServicesFAQ from '@/components/ServicesFAQ'
 
 export const metadata: Metadata = {
-  title: 'Nos Services - Adalink Group',
+  title: 'Nos Services - Netlink Solutions',
   description: 'Découvrez nos solutions de développement web et mobile : sites professionnels, applications iOS & Android, solutions sur mesure et accompagnement technique.',
 }
 

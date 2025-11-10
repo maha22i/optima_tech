@@ -9,14 +9,14 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Adalink Group - Développement web & mobile sur mesure',
-    template: '%s | Adalink Group'
+    default: 'Netlink Solutions - Développement web & mobile sur mesure',
+    template: '%s | Netlink Solutions'
   },
-  description: 'Adalink Group, entreprise djiboutienne de développement web et mobile. Création de sites internet, applications iOS & Android, solutions digitales sur mesure avec React, Next.js et React Native.',
+  description: 'Netlink Solutions, entreprise djiboutienne de développement web et mobile. Création de sites internet, applications iOS & Android, solutions digitales sur mesure avec React, Next.js et React Native.',
   keywords: ['développement web', 'application mobile', 'Djibouti', 'React', 'Next.js', 'React Native', 'iOS', 'Android', 'site internet'],
-  authors: [{ name: 'Adalink Group' }],
-  creator: 'Adalink Group',
-  publisher: 'Adalink Group',
+  authors: [{ name: 'Netlink Solutions' }],
+  creator: 'Netlink Solutions',
+  publisher: 'Netlink Solutions',
   formatDetection: {
     email: false,
     address: false,
@@ -24,16 +24,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://adalink.dj'),
   openGraph: {
-    title: 'Adalink Group - Développement web & mobile sur mesure',
+    title: 'Netlink Solutions - Développement web & mobile sur mesure',
     description: 'Votre partenaire technique pour créer des solutions digitales innovantes à Djibouti',
     url: 'https://adalink.dj',
-    siteName: 'Adalink Group',
+    siteName: 'Netlink Solutions',
     locale: 'fr_FR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Adalink Group - Développement web & mobile sur mesure',
+    title: 'Netlink Solutions - Développement web & mobile sur mesure',
     description: 'Votre partenaire technique pour créer des solutions digitales innovantes à Djibouti',
   },
   robots: {
@@ -57,10 +57,8 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" href="/logo-netlink.ico" />
+        <link rel="icon" type="image/png" href="/logo-netlink.png" />
       </head>
       <body className={`${inter.className} antialiased bg-white`}>
         <Header />

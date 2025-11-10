@@ -63,6 +63,15 @@ const PortfolioShowcase: React.FC = () => {
       tech: ['React', 'E-commerce', 'Paiement mobile', 'Local'],
       image: '/silalo.png',
       gradient: `linear-gradient(135deg, ${colors.support.dark}, ${colors.accent.premium})`
+    },
+    {
+      title: 'Pixel Nomade',
+      url: 'https://pixel-nomade.com',
+      description: 'Agence N°1 à Djibouti spécialisée en production vidéo, marketing digital et solutions web. Site moderne propulsé par l\'IA avec stratégie digitale sur mesure pour propulser la visibilité des entreprises.',
+      category: 'Agence Digital & Production',
+      tech: ['Next.js', 'Marketing Digital', 'Production Vidéo', 'IA'],
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      gradient: `linear-gradient(135deg, ${colors.accent.success}, ${colors.accent.successHover})`
     }
   ]
 
@@ -128,7 +137,7 @@ const PortfolioShowcase: React.FC = () => {
               >
                 <span className="inline-block">Nos Réalisations</span>
                 <span className="inline-block ml-2 bg-gradient-to-r from-blue-400 via-orange-400 to-purple-400 bg-clip-text text-transparent">
-                  en Djibouti et à l'étranger
+                  à Djibouti et à l'étranger
                 </span>
               </motion.h1>
 
@@ -136,7 +145,7 @@ const PortfolioShowcase: React.FC = () => {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-base sm:text-lg text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
+                className="text-base sm:text-lg text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed"
               >
                 Découvrez quelques-unes de nos réalisations qui témoignent de notre expertise en développement web et mobile. Chaque projet reflète notre engagement envers l'excellence technique.
               </motion.p>
@@ -202,25 +211,7 @@ const PortfolioShowcase: React.FC = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-5 h-8 border-2 border-gray-600 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [2, 12, 2] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-0.5 h-2 bg-gray-600 rounded-full mt-1.5"
-            />
-          </motion.div>
-        </motion.div>
+       
 
         <style jsx>{`
           @keyframes blob {

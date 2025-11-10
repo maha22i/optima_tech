@@ -11,7 +11,7 @@ const AboutHero: React.FC<AboutHeroProps> = () => {
       {/* Image de fond */}
       <Image
         src="/hero/slider1.jpg"
-        alt="Équipe Adalink Group"
+        alt="Équipe Netlink Solutions"
         fill
         priority
         sizes="100vw"
@@ -36,7 +36,7 @@ const AboutHero: React.FC<AboutHeroProps> = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-base sm:text-lg text-white/90 leading-relaxed mx-auto"
         >
-          Société technologique basée à Djibouti, Adalink Group accompagne entreprises, institutions et particuliers
+          Société technologique basée à Djibouti, Netlink Solutions accompagne entreprises, institutions et particuliers
           dans leur transformation digitale.
         </motion.p>
       </div>

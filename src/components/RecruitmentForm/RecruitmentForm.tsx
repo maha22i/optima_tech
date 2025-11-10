@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, Check, AlertCircle, User, Mail, MessageSquare, Briefcase, Loader2, Phone, Globe, FileText, Upload } from 'lucide-react'
 import emailjs from '@emailjs/browser'
@@ -28,6 +28,16 @@ const RecruitmentForm: React.FC<RecruitmentFormProps> = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [focusedField, setFocusedField] = useState<string | null>(null)
+
+  // Auto-hide success message after 5 seconds
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        setIsSubmitted(false)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [isSubmitted])
 
   const positionOptions = [
     { value: 'Développeur Full Stack', icon: Briefcase },
@@ -86,27 +96,53 @@ const RecruitmentForm: React.FC<RecruitmentFormProps> = () => {
     }
 
     try {
-      // Configuration EmailJS
-      emailjs.init('YOUR_PUBLIC_KEY') // À remplacer
-
-      const templateParams = {
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        from_email: formData.email,
-        phone: formData.phone || 'Non fourni',
+      // Préparer les données pour EmailJS
+      const templateParams: any = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone || 'Non renseigné',
         position: formData.position,
         experience: formData.experience || 'Non spécifié',
-        portfolio: formData.portfolio || 'Non fourni',
-        linkedin: formData.linkedin || 'Non fourni',
+        portfolio: formData.portfolio || 'Non renseigné',
+        linkedin: formData.linkedin || 'Non renseigné',
         salary: formData.salary || 'Non spécifié',
         availability: formData.availability || 'Non spécifiée',
-        message: formData.message || 'Pas de message supplémentaire',
-        to_email: 'contact@adalinkgroup.com'
+        message: formData.message || 'Pas de message de motivation',
+        cv_filename: formData.cv ? formData.cv.name : 'Aucun fichier joint',
+        cv_size: formData.cv ? `${(formData.cv.size / 1024 / 1024).toFixed(2)} MB` : 'N/A',
+        time: new Date().toLocaleString('fr-FR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
       }
 
+      // Si un fichier CV est présent, le convertir en base64 pour l'email
+      if (formData.cv) {
+        await new Promise<void>((resolve) => {
+          const reader = new FileReader()
+          reader.onloadend = () => {
+            templateParams.cv_attachment = reader.result as string
+            templateParams.cv_type = formData.cv!.type
+            templateParams.cv_base64 = (reader.result as string).split(',')[1] // Base64 sans le préfixe
+            resolve()
+          }
+          reader.onerror = () => {
+            console.error('Erreur lors de la lecture du fichier')
+            resolve()
+          }
+          reader.readAsDataURL(formData.cv!)
+        })
+      }
+
+      // Envoyer avec EmailJS
       await emailjs.send(
-        'YOUR_SERVICE_ID', // À remplacer
-        'YOUR_TEMPLATE_ID', // À remplacer
-        templateParams
+        'service_5r9k8zo', // Service ID
+        'template_cdvlzsc', // Template ID
+        templateParams,
+        'qAhyqdGUGl5uLDqT5' // Clé publique
       )
 
       setIsSubmitted(true)

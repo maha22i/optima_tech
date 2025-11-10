@@ -21,7 +21,7 @@ export default function MentionsLegalesClient() {
             Mentions légales
           </h1>
           <p className="text-xl text-gray-600">
-            Informations légales concernant Adalink Group
+            Informations légales concernant Netlink Solutions
           </p>
         </motion.div>
 
@@ -47,7 +47,7 @@ export default function MentionsLegalesClient() {
                   <Building size={20} className="text-blue-600 mt-1" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Dénomination sociale</p>
-                    <p className="text-gray-700">Adalink Group</p>
+                    <p className="text-gray-700">Netlink Solutions</p>
                   </div>
                 </div>
                 
@@ -83,7 +83,7 @@ export default function MentionsLegalesClient() {
                 Directeur de publication
               </h2>
               <p className="text-gray-700">
-                Le directeur de la publication du site internet adalink.dj est le représentant légal de l'entreprise Adalink Group.
+                Le directeur de la publication du site internet adalink.dj est le représentant légal de l'entreprise Netlink Solutions.
               </p>
             </section>
 

@@ -86,7 +86,7 @@ const AboutSectionPresenter: React.FC<AboutSectionPresenterProps> = () => {
                 backgroundImage: `linear-gradient(135deg, ${colors.support.primary}, ${colors.accent.primary})` 
               }}
             >
-            Adalink Group
+            NETLINK SOLUTIONS
             </span> votre partenaire de confiance
           </motion.h2>
           
@@ -98,7 +98,7 @@ const AboutSectionPresenter: React.FC<AboutSectionPresenterProps> = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Basé à Djibouti, Adalink Group transforme les idées en solutions digitales innovantes 
+            Basé à Djibouti, Netlink Solutions transforme les idées en solutions digitales innovantes 
             avec une expertise technique de haut niveau et un accompagnement personnalisé pour chaque projet.
           </motion.p>
         </motion.div>
@@ -147,7 +147,7 @@ const AboutSectionPresenter: React.FC<AboutSectionPresenterProps> = () => {
                 highlight: "Excellence technique"
               },
               {
-                text: "Basé au cœur de Djibouti, carrefour stratégique entre l'Afrique et le Moyen-Orient, Adalink Group bénéficie d'une position unique pour servir une clientèle internationale avec des solutions adaptées aux marchés locaux et une compréhension interculturelle approfondie.",
+                text: "Basé au cœur de Djibouti, carrefour stratégique entre l'Afrique et le Moyen-Orient, Netlink Solutions bénéficie d'une position unique pour servir une clientèle internationale avec des solutions adaptées aux marchés locaux et une compréhension interculturelle approfondie.",
                 highlight: "Positionnement stratégique"
               },
               {
@@ -191,7 +191,7 @@ const AboutSectionPresenter: React.FC<AboutSectionPresenterProps> = () => {
             >
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Équipe de développeurs Adalink Group travaillant sur des projets innovants"
+                alt="Équipe de développeurs Netlink Solutions travaillant sur des projets innovants"
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover"
                 width={1000}
                 height={600}

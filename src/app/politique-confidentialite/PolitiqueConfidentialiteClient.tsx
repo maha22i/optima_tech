@@ -45,7 +45,7 @@ export default function PolitiqueConfidentialiteClient() {
               </div>
               
               <p className="text-gray-700">
-                Adalink Group s'engage à protéger votre vie privée et vos données personnelles. Cette politique 
+                Netlink Solutions s'engage à protéger votre vie privée et vos données personnelles. Cette politique 
                 de confidentialité explique comment nous collectons, utilisons, stockons et protégeons 
                 vos informations personnelles conformément aux réglementations en vigueur.
               </p>

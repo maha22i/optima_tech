@@ -59,6 +59,16 @@ const ServicesPortfolioPresenter: React.FC<ServicesPortfolioPresenterProps> = ({
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       gradient: `linear-gradient(135deg, ${colors.support.dark}, ${colors.accent.premium})`,
       features: ['E-commerce Djibouti', 'Paiement mobile', 'Adapté au local']
+    },
+    {
+      title: 'Pixel Nomade',
+      url: 'https://pixel-nomade.com',
+      description: 'Agence N°1 à Djibouti spécialisée en production vidéo, marketing digital et solutions web. Site moderne propulsé par l\'IA avec stratégie digitale sur mesure pour propulser la visibilité des entreprises.',
+      category: 'Agence Digital & Production',
+      tech: ['Next.js', 'Marketing Digital', 'Production Vidéo', 'IA'],
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      gradient: `linear-gradient(135deg, ${colors.accent.success}, ${colors.accent.successHover})`,
+      features: ['Agence N°1 Djibouti', 'Production Vidéo', 'Marketing Digital']
     }
   ]
 

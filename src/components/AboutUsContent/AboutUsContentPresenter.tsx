@@ -56,7 +56,7 @@ const AboutUsContentPresenter: React.FC<AboutUsContentPresenterProps> = () => {
     {
       year: '2022',
       title: 'La naissance d\'une vision',
-      description: 'Adalink Group est né de la volonté de deux jeunes entrepreneurs djiboutiens passionnés par la technologie.',
+      description: 'Netlink Solutions est né de la volonté de deux jeunes entrepreneurs djiboutiens passionnés par la technologie.',
       icon: Zap
     },
     {
@@ -117,7 +117,7 @@ const AboutUsContentPresenter: React.FC<AboutUsContentPresenterProps> = () => {
                   <div className="absolute -left-4 top-0 w-1 h-full rounded-full"
                     style={{ backgroundColor: colors.accent.primary }}></div>
                   <p className="text-lg leading-relaxed pl-6" style={{ color: colors.text.primary }}>
-                    <span className="font-semibold">Adalink Group</span> est une société fondée à Djibouti 
+                    <span className="font-semibold">Netlink Solutions</span> est une société fondée à Djibouti 
                     avec la mission d'accompagner les entreprises, les institutions et les particuliers 
                     dans leur <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                     transformation digitale</span>.
@@ -927,7 +927,7 @@ const AboutUsContentPresenter: React.FC<AboutUsContentPresenterProps> = () => {
               Appel à action
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: colors.text.secondary }}>
-              Vous souhaitez en savoir plus sur nous ou collaborer avec Adalink Group ?
+              Vous souhaitez en savoir plus sur nous ou collaborer avec Netlink Solutions ?
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

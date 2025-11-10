@@ -1,5 +1,5 @@
 /**
- * Palette de couleurs ADALINK - Respect de la règle 60/30/10
+ * Palette de couleurs NETLINK SOLUTIONS - Respect de la règle 60/30/10
  *
  * 60% - Couleurs dominantes (neutrals, backgrounds)
  * 30% - Couleurs secondaires (supports, contrasts)
@@ -29,9 +29,9 @@ export const colors = {
 
   // 10% - COULEURS D’ACCENT (Actions & Highlights)
   accent: {
-    primary: "#ff8d1f", // Orange du logo
-    primaryHover: "#db720a",
-    primaryLight: "#ffe8d0",
+    primary: "#1530FF", // Bleu foncé du logo OPTIM
+    primaryHover: "#0a1e99",
+    primaryLight: "#5BC6FF", // Bleu clair du logo OPTIM
 
     success: "#388E3C",
     successHover: "#2E7B32",

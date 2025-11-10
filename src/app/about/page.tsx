@@ -3,8 +3,8 @@ import AboutUsHero from '@/components/AboutUsHero'
 import AboutUsContent from '@/components/AboutUsContent'
 
 export const metadata: Metadata = {
-  title: 'Qui sommes-nous - Adalink Group',
-  description: 'Découvrez Adalink Group, société technologique basée à Djibouti, spécialisée dans la transformation digitale des entreprises et institutions.',
+  title: 'Qui sommes-nous - Netlink Solutions',
+  description: 'Découvrez Netlink Solutions, société technologique basée à Djibouti, spécialisée dans la transformation digitale des entreprises et institutions.',
 }
 
 export default function AboutPage() {
